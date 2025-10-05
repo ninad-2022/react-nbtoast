@@ -1,19 +1,16 @@
-export type NotificationType =
-  | "success"
-  | "error"
-  | "warning"
-  | "info"
-  | "loading";
+import React from 'react';
 
-export type NotificationPosition =
-  | "top-left"
-  | "top-center"
-  | "top-right"
-  | "bottom-left"
-  | "bottom-center"
-  | "bottom-right";
+export type NotificationType = 'success' | 'error' | 'warning' | 'info' | 'loading';
 
-export type NotificationAnimation = "slide" | "fade" | "bounce" | "zoom";
+export type NotificationPosition = 
+  | 'top-left' 
+  | 'top-center' 
+  | 'top-right' 
+  | 'bottom-left' 
+  | 'bottom-center' 
+  | 'bottom-right';
+
+export type NotificationAnimation = 'slide' | 'fade' | 'bounce' | 'zoom';
 
 export interface NotificationConfig {
   id: string;
@@ -75,26 +72,11 @@ export interface NotificationProviderProps {
 export interface NotificationContextType {
   notifications: NotificationConfig[];
   showNotification: (message: string, options?: NotificationOptions) => string;
-  success: (
-    message: string,
-    options?: Omit<NotificationOptions, "type">
-  ) => string;
-  error: (
-    message: string,
-    options?: Omit<NotificationOptions, "type">
-  ) => string;
-  warning: (
-    message: string,
-    options?: Omit<NotificationOptions, "type">
-  ) => string;
-  info: (
-    message: string,
-    options?: Omit<NotificationOptions, "type">
-  ) => string;
-  loading: (
-    message: string,
-    options?: Omit<NotificationOptions, "type">
-  ) => string;
+  success: (message: string, options?: Omit<NotificationOptions, 'type'>) => string;
+  error: (message: string, options?: Omit<NotificationOptions, 'type'>) => string;
+  warning: (message: string, options?: Omit<NotificationOptions, 'type'>) => string;
+  info: (message: string, options?: Omit<NotificationOptions, 'type'>) => string;
+  loading: (message: string, options?: Omit<NotificationOptions, 'type'>) => string;
   dismiss: (id: string) => void;
   dismissAll: () => void;
   update: (id: string, options: Partial<NotificationConfig>) => void;

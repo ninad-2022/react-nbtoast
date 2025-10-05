@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { NotificationAnimation, NotificationConfig } from "../types";
+import type { NotificationAnimation, NotificationConfig } from "../types";
 import "./NotificationToast.css";
 
 interface NotificationToastProps {

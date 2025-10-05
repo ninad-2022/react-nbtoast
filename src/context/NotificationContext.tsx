@@ -1,24 +1,23 @@
-
-import React, { createContext, useCallback, useState } from 'react';
-import {
+import React, { createContext, useCallback, useState } from "react";
+import type {
   NotificationConfig,
   NotificationContextType,
   NotificationOptions,
   NotificationProviderProps,
-} from '../types';
-import NotificationContainer from '../components/NotificationContainer';
+} from "../types";
+import NotificationContainer from "../components/NotificationContainer";
 
-export const NotificationContext = createContext<NotificationContextType | undefined>(
-  undefined
-);
+export const NotificationContext = createContext<
+  NotificationContextType | undefined
+>(undefined);
 
 let notificationId = 0;
 
 export const NotificationProvider: React.FC<NotificationProviderProps> = ({
   children,
-  position = 'top-right',
+  position = "top-right",
   maxNotifications = 5,
-  animation = 'slide',
+  animation = "slide",
   animationDuration = 300,
   enableStacking = false,
   stackingOffset = 10,
@@ -31,10 +30,10 @@ export const NotificationProvider: React.FC<NotificationProviderProps> = ({
   const showNotification = useCallback(
     (message: string, options?: NotificationOptions): string => {
       const id = `notification-${++notificationId}`;
-      
+
       const newNotification: NotificationConfig = {
         id,
-        type: options?.type || 'info',
+        type: options?.type || "info",
         message,
         title: options?.title,
         duration: options?.duration ?? defaultDuration,
@@ -66,39 +65,42 @@ export const NotificationProvider: React.FC<NotificationProviderProps> = ({
     setNotifications([]);
   }, []);
 
-  const update = useCallback((id: string, options: Partial<NotificationConfig>) => {
-    setNotifications((prev) =>
-      prev.map((n) => (n.id === id ? { ...n, ...options } : n))
-    );
-  }, []);
+  const update = useCallback(
+    (id: string, options: Partial<NotificationConfig>) => {
+      setNotifications((prev) =>
+        prev.map((n) => (n.id === id ? { ...n, ...options } : n))
+      );
+    },
+    []
+  );
 
   const success = useCallback(
-    (message: string, options?: Omit<NotificationOptions, 'type'>) =>
-      showNotification(message, { ...options, type: 'success' }),
+    (message: string, options?: Omit<NotificationOptions, "type">) =>
+      showNotification(message, { ...options, type: "success" }),
     [showNotification]
   );
 
   const error = useCallback(
-    (message: string, options?: Omit<NotificationOptions, 'type'>) =>
-      showNotification(message, { ...options, type: 'error' }),
+    (message: string, options?: Omit<NotificationOptions, "type">) =>
+      showNotification(message, { ...options, type: "error" }),
     [showNotification]
   );
 
   const warning = useCallback(
-    (message: string, options?: Omit<NotificationOptions, 'type'>) =>
-      showNotification(message, { ...options, type: 'warning' }),
+    (message: string, options?: Omit<NotificationOptions, "type">) =>
+      showNotification(message, { ...options, type: "warning" }),
     [showNotification]
   );
 
   const info = useCallback(
-    (message: string, options?: Omit<NotificationOptions, 'type'>) =>
-      showNotification(message, { ...options, type: 'info' }),
+    (message: string, options?: Omit<NotificationOptions, "type">) =>
+      showNotification(message, { ...options, type: "info" }),
     [showNotification]
   );
 
   const loading = useCallback(
-    (message: string, options?: Omit<NotificationOptions, 'type'>) =>
-      showNotification(message, { ...options, type: 'loading', duration: 0 }),
+    (message: string, options?: Omit<NotificationOptions, "type">) =>
+      showNotification(message, { ...options, type: "loading", duration: 0 }),
     [showNotification]
   );
 

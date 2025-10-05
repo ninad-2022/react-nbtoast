@@ -1,13 +1,11 @@
-// src/components/NotificationContainer.tsx
-
-import React from 'react';
-import {
+import React from "react";
+import type {
   NotificationAnimation,
   NotificationConfig,
   NotificationPosition,
-} from '../types';
-import NotificationToast from './NotificationToast';
-import './NotificationContainer.css';
+} from "../types";
+import NotificationToast from "./NotificationToast";
+import "./NotificationContainer.css";
 
 interface NotificationContainerProps {
   notifications: NotificationConfig[];
@@ -38,9 +36,7 @@ const NotificationContainer: React.FC<NotificationContainerProps> = ({
     ? notifications.slice(0, 1)
     : notifications;
 
-  const stackedNotifications = enableStacking
-    ? notifications.slice(1, 4)
-    : [];
+  const stackedNotifications = enableStacking ? notifications.slice(1, 4) : [];
 
   return (
     <div
@@ -67,9 +63,9 @@ const NotificationContainer: React.FC<NotificationContainerProps> = ({
               key={notification.id}
               className="notification-stack__item"
               style={{
-                transform: `translateY(${(index + 1) * stackingOffset}px) scale(${
-                  1 - (index + 1) * 0.05
-                })`,
+                transform: `translateY(${
+                  (index + 1) * stackingOffset
+                }px) scale(${1 - (index + 1) * 0.05})`,
                 opacity: 1 - (index + 1) * 0.25,
                 zIndex: 100 - (index + 1),
               }}

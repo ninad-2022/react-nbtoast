@@ -1,0 +1,106 @@
+/* src/components/NotificationContainer.css */
+
+.notification-container {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.notification-container > * {
+  pointer-events: auto;
+}
+
+/* Position Variants */
+.notification-container--top-left {
+  top: 20px;
+  left: 20px;
+}
+
+.notification-container--top-center {
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.notification-container--top-right {
+  top: 20px;
+  right: 20px;
+}
+
+.notification-container--bottom-left {
+  bottom: 20px;
+  left: 20px;
+  flex-direction: column-reverse;
+}
+
+.notification-container--bottom-center {
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  flex-direction: column-reverse;
+}
+
+.notification-container--bottom-right {
+  bottom: 20px;
+  right: 20px;
+  flex-direction: column-reverse;
+}
+
+/* Stacking Styles */
+.notification-stack {
+  position: relative;
+  margin-top: -12px;
+}
+
+.notification-stack__item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.notification-stack__placeholder {
+  min-width: 320px;
+  max-width: 480px;
+  height: 80px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.notification-stack__count {
+  margin-top: 8px;
+  padding: 8px 16px;
+  background: rgba(0, 0, 0, 0.7);
+  color: #ffffff;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .notification-container--top-left,
+  .notification-container--bottom-left {
+    left: 16px;
+  }
+
+  .notification-container--top-right,
+  .notification-container--bottom-right {
+    right: 16px;
+  }
+
+  .notification-container--top-center,
+  .notification-container--bottom-center {
+    left: 16px;
+    right: 16px;
+    transform: none;
+  }
+}

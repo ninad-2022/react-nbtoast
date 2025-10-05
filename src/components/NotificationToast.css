@@ -1,0 +1,314 @@
+.notification-toast {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  min-width: 320px;
+  max-width: 480px;
+  padding: 16px;
+  margin-bottom: 12px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.notification-toast:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Icon Styles */
+.notification-toast__icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.notification-toast--success .notification-toast__icon {
+  color: #10b981;
+}
+
+.notification-toast--error .notification-toast__icon {
+  color: #ef4444;
+}
+
+.notification-toast--warning .notification-toast__icon {
+  color: #f59e0b;
+}
+
+.notification-toast--info .notification-toast__icon {
+  color: #3b82f6;
+}
+
+.notification-toast--loading .notification-toast__icon {
+  color: #3b82f6;
+}
+
+/* Content Styles */
+.notification-toast__content {
+  flex: 1;
+  min-width: 0;
+}
+
+.notification-toast__title {
+  font-weight: 600;
+  font-size: 14px;
+  color: #1f2937;
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+
+.notification-toast__message {
+  font-size: 13px;
+  color: #6b7280;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+.notification-toast__action {
+  margin-top: 8px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  background: transparent;
+  border: 1px solid currentColor;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.notification-toast--success .notification-toast__action {
+  color: #10b981;
+}
+
+.notification-toast--error .notification-toast__action {
+  color: #ef4444;
+}
+
+.notification-toast--warning .notification-toast__action {
+  color: #f59e0b;
+}
+
+.notification-toast--info .notification-toast__action {
+  color: #3b82f6;
+}
+
+.notification-toast__action:hover {
+  opacity: 0.8;
+  transform: translateY(-1px);
+}
+
+/* Close Button */
+.notification-toast__close {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #9ca3af;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+.notification-toast__close:hover {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+/* Progress Bar */
+.notification-toast__progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.notification-toast__progress-bar {
+  height: 100%;
+  transition: width linear;
+}
+
+.notification-toast--success .notification-toast__progress-bar {
+  background: #10b981;
+}
+
+.notification-toast--error .notification-toast__progress-bar {
+  background: #ef4444;
+}
+
+.notification-toast--warning .notification-toast__progress-bar {
+  background: #f59e0b;
+}
+
+.notification-toast--info .notification-toast__progress-bar {
+  background: #3b82f6;
+}
+
+.notification-toast--loading .notification-toast__progress-bar {
+  background: #3b82f6;
+}
+
+/* Loading Animation */
+.rotate-animation {
+  animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Slide Animation */
+.notification-toast--slide.notification-toast--enter {
+  animation: slideIn forwards;
+}
+
+.notification-toast--slide.notification-toast--exit {
+  animation: slideOut forwards;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+/* Fade Animation */
+.notification-toast--fade.notification-toast--enter {
+  animation: fadeIn forwards;
+}
+
+.notification-toast--fade.notification-toast--exit {
+  animation: fadeOut forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Bounce Animation */
+.notification-toast--bounce.notification-toast--enter {
+  animation: bounceIn forwards;
+}
+
+.notification-toast--bounce.notification-toast--exit {
+  animation: bounceOut forwards;
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.3) translateX(100%);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05) translateX(0);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes bounceOut {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(0.3) translateX(100%);
+    opacity: 0;
+  }
+}
+
+/* Zoom Animation */
+.notification-toast--zoom.notification-toast--enter {
+  animation: zoomIn forwards;
+}
+
+.notification-toast--zoom.notification-toast--exit {
+  animation: zoomOut forwards;
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes zoomOut {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .notification-toast {
+    min-width: 280px;
+    max-width: calc(100vw - 32px);
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+}
